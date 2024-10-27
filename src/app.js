@@ -13,6 +13,7 @@ const PORT = process.env.PORT || 4000;
 app.use(helmet());
 app.use(bodyParser.json());
 app.use('/tasks', taskRoutes);
+setupSwaggerDocs(app); // set up Swagger
 app.use(errorHandler);
 
 app.listen(PORT, () => {
