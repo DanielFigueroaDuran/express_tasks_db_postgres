@@ -1,24 +1,24 @@
 import { Router } from "express";
 import { taskController } from "../controllers/taskController.js";
-import { body, param, validationResult } from "express-validator";// esta importación es para validar las rutas que no esten vacias
+import { body, param, validationResult } from "express-validator";
 
 const validateBodyTask = [
       body("title")
-            .isLength({ min: 1 }).withMessage("Title en requerido")// de esta forma le decimos que como minimo tiene que tener 1 caracter
-            .trim() // con este codigo eliminamos los espacios en blanco
-            .escape(), // con este codigo eliminamos las inyecciones SQL 
+            .isLength({ min: 1 }).withMessage("Title en requerido")
+            .trim()
+            .escape(),
       body("description")
-            .optional() // este quiere decir que es opcional
+            .optional()
             .isString().withMessage("Descripción tiene que ser un string")
             .trim()
             .escape()
 ];
 
 const validateParamTaskId = [
-      param("id")// el parametro que vamos a validar es el Id
+      param("id")
             .isInt({ gt: 0 }).withMessage("El id de la tarea tiene que ser mayor que 0 y valor positivo")
-            .toInt() // con este codigo lo convertimos a valor entero
-]
+            .toInt()
+];
 
 const router = Router();
 

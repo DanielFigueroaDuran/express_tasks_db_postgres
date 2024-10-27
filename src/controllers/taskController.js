@@ -1,7 +1,8 @@
 import { taskModel } from "../models/taskModel.js";
 import { validationResult } from "express-validator";
 
-// Buscar todas las tareas
+// Select all tasks
+
 const getTasks = async (req, res, next) => {
       try {
             const tasks = await taskModel.getTasks();
@@ -12,12 +13,12 @@ const getTasks = async (req, res, next) => {
       }
 };
 
-// buscar tareas por Id
+//Function to search tasks by id
 
 const getTasksById = async (req, res, next) => {
-      const errors = validationResult(req);// con este codigo si ocurrio un error lo rescatamos de esta manera
+      const errors = validationResult(req);
       if (!errors.isEmpty()) {
-            return res.status(400).json({ errors: errors.array() }); // se coloca array por que puede haver mas de dos errores
+            return res.status(400).json({ errors: errors.array() });
       }
 
       try {
@@ -32,7 +33,7 @@ const getTasksById = async (req, res, next) => {
       }
 };
 
-// Crear nueva tarea 
+//Function to create a new task
 
 const createTask = async (req, res, next) => {
       const errors = validationResult(req);
@@ -49,7 +50,7 @@ const createTask = async (req, res, next) => {
       }
 };
 
-// Actualizar tarea
+// Function to update tasks
 
 const updateTask = async (req, res, next) => {
       const errors = validationResult(req);
@@ -69,7 +70,7 @@ const updateTask = async (req, res, next) => {
       }
 };
 
-// Eliminar tareas
+// Function to Delete tasks
 
 const deleteTask = async (req, res, next) => {
       const errors = validationResult(req);

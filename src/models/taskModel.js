@@ -1,6 +1,6 @@
 import { pool } from "../config/db.js";
 
-// Selecionar todas las tareas
+// Select all tasks
 
 const getTasks = async () => {
       try {
@@ -11,6 +11,8 @@ const getTasks = async () => {
       };
 };
 
+//Function to search tasks by id
+
 const getTasksById = async (id) => {
       try {
             const { rows } = await pool.query("SELECT * FROM tasks WHERE id = $1", [id]);
@@ -20,7 +22,7 @@ const getTasksById = async (id) => {
       }
 };
 
-//Funcion para crear una nueva tarea
+//Function to create a new task
 
 const createTask = async (task) => {
       const { title, description } = task;
@@ -32,7 +34,7 @@ const createTask = async (task) => {
       }
 };
 
-// Funcion para actualizar tareas
+// Function to update tasks
 
 const update = async (id, task) => {
       const { title, description } = task
@@ -44,7 +46,7 @@ const update = async (id, task) => {
       }
 };
 
-// Funcion para Eliminar las tareas
+// Function to Delete tasks
 
 const deleteTask = async (id) => {
       try {

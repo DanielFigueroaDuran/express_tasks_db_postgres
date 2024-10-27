@@ -8,10 +8,10 @@ import helmet from "helmet";
 const app = express();
 const PORT = process.env.PORT || 4000;
 
-app.use(helmet()); // Ayude a proteger las aplicaciones Express configurando encabezados de respuesta HTTP. cuando este desplegados
+app.use(helmet());
 app.use(bodyParser.json());
-app.use('/tasks', taskRoutes);// asignación de rutas
-app.use(errorHandler);// controlador de errores y llama a el arcivo que esta en middleware/errorHandleware.js
+app.use('/tasks', taskRoutes);
+app.use(errorHandler);
 
 app.listen(PORT, () => {
       console.log(`Servidor Conectado por el puerto ${PORT} `);

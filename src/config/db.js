@@ -14,10 +14,10 @@ export const pool = new Pool({
             rejectUnauthorized: true,
             ca: fs.readFileSync("src/certs/ca.crt").toString()
       },
-      allowExitOnIdle: true // con este codigo le decimos que cierre la conección despues que haga la peticion para que no se colapse la base de datos
+      allowExitOnIdle: true
 });
 
-// Verificar conexión a la base de datos
+// Verify connection to the database
 
 pool.connect((err, Client, release) => {
       if (err) {
